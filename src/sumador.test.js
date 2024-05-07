@@ -16,7 +16,14 @@ describe("buscarproeycto", () => {
     proyectos.push("proyecto2")
     expect(buscarProyecto("proyec", proyectos)).toEqual("proyecto1proyecto2proyecto3proyecto2")
   });
- 
+  it("Se deberia debolver, (no se encontro el proyecto) si no existe en los proyectos ", () => {
+    let proyectos = [];
+    proyectos.push("proyecto1")
+    proyectos.push("proyecto2")
+    proyectos.push("proyecto3")
+    proyectos.push("proyecto2")
+    expect(buscarProyecto("proyecto4", proyectos)).toEqual("no se encontro el proyecto")
+  });
 });
 
 function buscarProyecto(nombre, proyectos){
@@ -36,6 +43,11 @@ function buscarProyecto(nombre, proyectos){
         // Si lo contiene, añadirlo al array de elementos encontrados
         proyectosbuscados=proyectosbuscados+proyecto;
        }
+      
     }
+    if(proyectosbuscados==="")
+      {
+        return proyectosbuscados = "no se encontro el proyecto"
+      }
     return proyectosbuscados;
 }
